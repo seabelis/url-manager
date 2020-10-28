@@ -1,7 +1,15 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import './App.css';
 
+const formReducer = (state, event) => {
+  return {
+    ...state,
+    [event.name]: event.value
+  }
+}
+
 function App() {
+  const [formData, setFormData] = useReducer(formReducer, {})
   const [submitting, setSubmitting] = useState(false)
   const handleSubmit = event => {
     event.preventDefault()
@@ -10,6 +18,13 @@ function App() {
     setTimeout(() => {
       setSubmitting(false)
     }, 3000)
+  }
+
+  const handleChange = event => {
+    setFormData({
+      name:event.target.name,
+      value: event.target.value,
+    })
   }
 
   return (
@@ -22,7 +37,7 @@ function App() {
         <fieldset>
           <label>
             <p>URL</p>
-            <input name="name" />
+            <input name="name" onChange={handleChange} />
           </label>
         </fieldset>
         <button type="submit">Submit</button>
