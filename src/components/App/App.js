@@ -37,7 +37,7 @@ function App() {
         <fieldset>
           <label>
             <p>URL</p>
-            <input name="name" onChange={handleChange} />
+            <input name="name" onChange={handleChange} value={formData.name} />
           </label>
         </fieldset>
         <button type="submit">Submit</button>
