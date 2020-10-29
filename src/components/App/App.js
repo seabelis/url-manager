@@ -34,13 +34,13 @@ function App() {
         <div>Submitting Form...</div>
       }
       <form onSubmit={handleSubmit}>
-        <fieldset>
+        <fieldset disabled={submitting}>
           <label>
             <p>URL</p>
-            <input name="name" onChange={handleChange} value={formData.name} />
+            <input name="url" onChange={handleChange} value={formData.url} />
           </label>
         </fieldset>
-        <button type="submit">Submit</button>
+        <button type="submit" disabled={submitting}>Submit</button>
       </form>
     </div>
   )
